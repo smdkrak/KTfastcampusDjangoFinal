@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% comment %} TODO: 6. bootstrap 스타일을 적용해주세요	DONE {% endcomment %}
+</head>
+
+  <div class="container">
+      {% comment %} TODO: 4. /index 페이지에는 로그인 한 유저 이름을 출력해야 합니다. ex) hello, 홍길동 DONE {% endcomment %}
+    Hello, world
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        {{welcome_msg}}
+        <a class="navbar-brand" href="#">FINAL PROJECT - 지금 로그인한 당신은 누구입니까?</a>
+      </div>
+  </nav>
+  <!-- {{ user }} <br>
+  {% for i in params %} {{i}} <br>
+  {% endfor %}  -->
+  {% if user.is_authenticated %}
+  유저이름 => {{request.user.username}}
+  <p><a href="{% url 'logout' %}"> 로그아웃 </a> </p>
+  {% else %}
+  <p><a href="{% url 'register' %}"> 회원가입 </a> </p>
+  <p><a href="{% url 'login' %}"> 로그인 </a> </p>
+  {%endif%}
+
+  </div>
+  {% endblock %}
+
